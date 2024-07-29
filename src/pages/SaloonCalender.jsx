@@ -8,38 +8,19 @@ const apiurl = import.meta.env.VITE_API_CALENDER_TIME_SLOTS_WISE_DATA;
 const employee_url = import.meta.env.VITE_API_PENDING_APPOINTMENTS_EMPLOYEES;
 
 const timeSlots = [
-  "09:00",
-  "09:30",
-  "10:00",
-  "10:30",
-  "11:00",
-  "11:30",
-  "12:00",
-  "12:30",
-  "13:00",
-  "13:30",
-  "14:00",
-  "14:30",
-  "15:00",
-  "15:30",
-  "16:00",
-  "16:30",
-  "17:00",
-  "17:30",
-  "18:00",
-  "18:30",
-  "19:00",
-  "19:30",
-  "20:00",
-  "20:30",
+  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
+  "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
+  "18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
 ];
 
-const services = {
-  "1721372236692ch786543": "hair-colouring",
-  "1721372178803ch786543": "beard-grooming",
-  "1721294571091Da786543": "blow-dry",
-  "1721298452876Dh786543": "balinese-massage",
-  "1721372872117hu786543": "hair-cut",
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 };
 
 const SaloonCalender = () => {
@@ -54,7 +35,12 @@ const SaloonCalender = () => {
         const employeeData = response.data;
         const employeeArray = Object.keys(employeeData)
           .filter((key) => key !== "success")
-          .map((key) => ({ id: key, name: employeeData[key]?.name, role: "" }));
+          .map((key) => ({
+            id: key,
+            name: employeeData[key]?.name,
+            designation: employeeData[key]?.designation,
+            imgUrl: employeeData[key]?.imgUrl,
+          }));
 
         setEmployees(employeeArray);
       } catch (error) {
@@ -104,10 +90,6 @@ const SaloonCalender = () => {
     return `${adjustedHour}:${minuteInt < 10 ? `0${minuteInt}` : minuteInt} ${ampm}`;
   };
 
-  const getAppointmentStyle = (serviceId) => {
-    return services[serviceId] || "default-service";
-  };
-
   return (
     <div className="employee-calendar">
       <div className="calendar-controls">
@@ -122,11 +104,17 @@ const SaloonCalender = () => {
             className="styled-date-picker"
           />
         </div>
-        <button className="add-button">Add New</button>
       </div>
-      <div className="employee-body">
+      <div className="employee-list">
+        {employees.map((employee) => (
+          <div key={employee.id} className="employee-item">
+            <img src={employee.imgUrl} alt={employee.name} className="employee-image" />
+            <span className="employee-name">{employee.name}</span>
+          </div>
+        ))}
+      </div>
+      <div className="calendar-body">
         <div className="employee-time-slots">
-          <h3 className="calendar-separation">Time-Slots</h3>
           {timeSlots.map((slot, index) => (
             <div key={index} className="employee-time-slot">
               {convertTo12HourFormat(slot)}
@@ -136,26 +124,25 @@ const SaloonCalender = () => {
         <div className="employee-columns">
           {employees.map((employee) => (
             <div key={employee.id} className="employee-column">
-              <div className="employee-column-header">
-                <strong>{employee.name}</strong>
-              </div>
-              <div className="employee-appointments">
-                {timeSlots.map((slot) => (
-                  <div key={slot} className="employee-appointment-slot">
-                    {appointments[slot] && appointments[slot][employee.id] ? (
-                      <div
-                        className={`employee-appointment ${getAppointmentStyle(
-                          appointments[slot][employee.id]
-                        )}`}
-                      >
-                        <span>{convertTo12HourFormat(slot)}</span>
-                        <br />
-                        <span>{services[appointments[slot][employee.id]]}</span>
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
+              {timeSlots.map((slot) => (
+                <div key={slot} className="employee-appointment-slot">
+                  {appointments[slot] && appointments[slot][employee.id] && Array.isArray(appointments[slot][employee.id]) ? (
+                    <div className="employee-appointment-row">
+                      {appointments[slot][employee.id].map((appointment, index) => (
+                        <div
+                          key={index}
+                          className="employee-appointment"
+                          style={{ backgroundColor: getRandomColor() }}
+                        >
+                          <span>{convertTo12HourFormat(appointment.time)}</span>
+                          <span>{appointment.services.join(", ")}</span>
+                          <span>Employee: {employee.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
             </div>
           ))}
         </div>
