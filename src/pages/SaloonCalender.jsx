@@ -8,15 +8,35 @@ const apiurl = import.meta.env.VITE_API_CALENDER_TIME_SLOTS_WISE_DATA;
 const employee_url = import.meta.env.VITE_API_PENDING_APPOINTMENTS_EMPLOYEES;
 
 const timeSlots = [
-  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
-  "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
-  "18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
 ];
 
 const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
+  const letters = "0123456789ABCDEF";
+  let color = "#";
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -51,7 +71,12 @@ const SaloonCalender = () => {
     const fetchAppointments = async () => {
       try {
         const response = await axios.post(apiurl, {
-          date: currentDate.toISOString().split("T")[0].split("-").reverse().join("-"),
+          date: currentDate
+            .toISOString()
+            .split("T")[0]
+            .split("-")
+            .reverse()
+            .join("-"),
         });
         setAppointments(response.data || {});
       } catch (error) {
@@ -87,15 +112,23 @@ const SaloonCalender = () => {
     const minuteInt = parseInt(minute, 10);
     const ampm = hourInt >= 12 ? "PM" : "AM";
     const adjustedHour = hourInt % 12 || 12;
-    return `${adjustedHour}:${minuteInt < 10 ? `0${minuteInt}` : minuteInt} ${ampm}`;
+    return `${adjustedHour}:${
+      minuteInt < 10 ? `0${minuteInt}` : minuteInt
+    } ${ampm}`;
   };
 
   return (
     <div className="employee-calendar">
       <div className="calendar-controls">
-        <button onClick={handlePrevDay} className="nav-button">&lt;</button>
-        <button onClick={handleToday} className="nav-button">Today</button>
-        <button onClick={handleNextDay} className="nav-button">&gt;</button>
+        <button onClick={handlePrevDay} className="nav-button">
+          &lt;
+        </button>
+        <button onClick={handleToday} className="nav-button">
+          Today
+        </button>
+        <button onClick={handleNextDay} className="nav-button">
+          &gt;
+        </button>
         <div className="date-display">
           <DatePicker
             selected={currentDate}
@@ -108,7 +141,11 @@ const SaloonCalender = () => {
       <div className="employee-list">
         {employees.map((employee) => (
           <div key={employee.id} className="employee-item">
-            <img src={employee.imgUrl} alt={employee.name} className="employee-image" />
+            <img
+              src={employee.imgUrl}
+              alt={employee.name}
+              className="employee-image"
+            />
             <span className="employee-name">{employee.name}</span>
           </div>
         ))}
@@ -126,19 +163,22 @@ const SaloonCalender = () => {
             <div key={employee.id} className="employee-column">
               {timeSlots.map((slot) => (
                 <div key={slot} className="employee-appointment-slot">
-                  {appointments[slot] && appointments[slot][employee.id] && Array.isArray(appointments[slot][employee.id]) ? (
-                    <div className="employee-appointment-row">
-                      {appointments[slot][employee.id].map((appointment, index) => (
-                        <div
-                          key={index}
-                          className="employee-appointment"
-                          style={{ backgroundColor: getRandomColor() }}
-                        >
-                          <span>{convertTo12HourFormat(appointment.time)}</span>
-                          <span>{appointment.services.join(", ")}</span>
-                          <span>Employee: {employee.name}</span>
-                        </div>
-                      ))}
+                  {appointments[slot] && appointments[slot][employee.id] ? (
+                    <div
+                      className="employee-appointment"
+                      style={{ backgroundColor: getRandomColor() }}
+                    >
+                      <span>
+                        {convertTo12HourFormat(
+                          appointments[slot][employee.id].time
+                        )}
+                      </span>
+                      <br />
+                      <span>
+                        {appointments[slot][employee.id].services.join(", ")}
+                      </span>
+                      <br />
+                      <span>Employee: {employee.name}</span>
                     </div>
                   ) : null}
                 </div>
