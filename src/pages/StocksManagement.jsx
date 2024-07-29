@@ -9,6 +9,7 @@ import Loader from "../components/Loader";
 const stock_data_url = import.meta.env.VITE_API_INVENTORY_STOCK_MANAGEMENT;
 const add_stock_url = import.meta.env.VITE_API_ADD_STOCKS;
 const edit_stocks_url = import.meta.env.VITE_API_EDIT_STOCKS;
+const delete_stocks_url = import.meta.env.VITE_API_DELETE_STOCKS;
 
 const StocksManagement = () => {
   const [data, setData] = useState([]);
@@ -16,6 +17,8 @@ const StocksManagement = () => {
   const [loading, setLoading] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const [deleteIndex, setDeleteIndex] = useState(null); // For delete index
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // For delete modal state
   const [newProduct, setNewProduct] = useState({
     image: "",
     productName: "",
@@ -24,6 +27,7 @@ const StocksManagement = () => {
   });
   const [imagePreview, setImagePreview] = useState("");
 
+  // Inventory data
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -79,7 +83,7 @@ const StocksManagement = () => {
               className="stock-edit-icon"
               onClick={() => handleEdit(row.index)}
             />
-            <FaTrash className="stock-delete-icon" />
+            <FaTrash className="stock-delete-icon" onClick={() => openDeleteModal(row.index)} />
           </div>
         ),
       },
@@ -117,6 +121,13 @@ const StocksManagement = () => {
 
   const closeModal = () => setIsOpen(false);
 
+  const openDeleteModal = (index) => {
+    setDeleteIndex(index);
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => setIsDeleteModalOpen(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "productName" && value.length > 15) {
@@ -134,6 +145,14 @@ const StocksManagement = () => {
   };
 
   const handleSubmit = async () => {
+    if (isEditMode) {
+      handleEditSubmit();
+    } else {
+      handleAddSubmit();
+    }
+  };
+
+  const handleAddSubmit = async () => {
     try {
       const formData = new FormData();
       formData.append("name", newProduct.productName);
@@ -155,13 +174,7 @@ const StocksManagement = () => {
         image: response.data.imageUrl || imagePreview,
       };
 
-      if (isEditMode) {
-        const updatedData = [...data];
-        updatedData[editIndex] = newProductWithImageUrl;
-        setData(updatedData);
-      } else {
-        setData((prevData) => [...prevData, newProductWithImageUrl]);
-      }
+      setData((prevData) => [...prevData, newProductWithImageUrl]);
 
       setNewProduct({
         image: "",
@@ -176,8 +189,56 @@ const StocksManagement = () => {
     }
   };
 
-  const handleEdit = (index) => {
-    openModal(true, index);
+  const handleEditSubmit = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("name", newProduct.productName);
+      formData.append("quantity", newProduct.piece);
+      formData.append("price", newProduct.price);
+
+      if (newProduct.image) {
+        formData.append("img", newProduct.image);
+      }
+
+      const response = await axios.post(edit_stocks_url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const updatedProductWithImageUrl = {
+        ...newProduct,
+        image: response.data.imageUrl || imagePreview,
+      };
+
+      const updatedData = [...data];
+      updatedData[editIndex] = updatedProductWithImageUrl;
+      setData(updatedData);
+
+      setNewProduct({
+        image: "",
+        productName: "",
+        price: "",
+        piece: "",
+      });
+      setImagePreview("");
+      closeModal();
+    } catch (error) {
+      console.error("Error updating data: ", error);
+    }
+  };
+
+  const handleDelete = async () => {
+    const product = data[deleteIndex];
+    try {
+      await axios.post(delete_stocks_url, { name: product.productName });
+
+      const updatedData = data.filter((_, index) => index !== deleteIndex);
+      setData(updatedData);
+      closeDeleteModal();
+    } catch (error) {
+      console.error("Error deleting data: ", error);
+    }
   };
 
   const handleClick = () => {
@@ -234,7 +295,7 @@ const StocksManagement = () => {
                   <div className="stock-image-upload" onClick={handleClick}>
                     <input
                       type="file"
-                      // id="fileInput"    aek bar dekhlena testing ke samaya
+                      id="fileInput"
                       name="image"
                       onChange={handleImageChange}
                       style={{ display: "none" }}
@@ -298,8 +359,25 @@ const StocksManagement = () => {
           </div>
         </div>
       )}
+
+      {isDeleteModalOpen && (
+        <div className="stock-modal-overlay">
+          <div className="stock-modal-content">
+            <div className="stock-header-content">
+              <img src={add_product} alt="" className="stock-header-img" />
+              <h3 className="stock-modal-title">Delete Product</h3>
+            </div>
+            <p>Are you sure you want to delete this product?</p>
+            <div className="stock-modal-buttons">
+              <button type="button" onClick={closeDeleteModal}>Cancel</button>
+              <button type="button" onClick={handleDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default StocksManagement;
+
