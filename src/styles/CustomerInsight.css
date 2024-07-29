@@ -1,0 +1,62 @@
+.insight-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 30%;
+    position: relative; 
+  }
+  
+  .insight-container h3 {
+    color: #333;
+  }
+  
+  .insight-total {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .insight-total p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .insight-total h2 {
+    margin: 0;
+    font-size: 32px;
+    color: #333;
+  }
+  
+  .insight-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .legend-item {
+    margin: 0 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .new-user {
+    background-color: #a259ff;
+  }
+  
+  .old-user {
+    background-color: #ececec;
+  }
+  

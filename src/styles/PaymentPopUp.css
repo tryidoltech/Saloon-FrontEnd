@@ -1,0 +1,148 @@
+.payment-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-popup {
+  background: url("../assets/payment-pic.png") no-repeat center center;
+  background-size: cover;
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  height: 500px;
+}
+
+.payment-popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.payment-popup-header h2 {
+  margin: 0;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+.close-button {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  right: 45px;
+}
+
+.payment-popup-content {
+  text-align: center;
+  margin-top: -2.5rem;
+}
+
+.payment-method p {
+  margin-top: 3rem;
+  font-weight: 300;
+}
+
+.payment-method label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.payment-method .upi-label input {
+  margin-left: 35px;
+}
+
+.payment-method label input {
+  margin-left: 20px;
+}
+
+.payment-details-tid {
+  margin-top: 0.5rem;
+}
+
+.payment-details-tid p {
+  font-weight: 500;
+}
+
+.payment-details-tid input {
+  margin-top: 0.5rem;
+  padding: 5px;
+  font-size: 16px;
+  width: 70%;
+  max-width: 300px;
+  border: none;
+  border-radius: 8px;
+}
+
+.payment-method label input[type="radio"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.payment-method label input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+/* .payment-details-amt p{
+  margin-top: 0.3rem;
+    font-weight: 300;
+}
+
+.payment-details-amt span{
+    font-weight: 600;
+} */
+
+.qrcode-container {
+  margin-top: 0.3rem;
+  /* padding: 5px; */
+  border-radius: 10px;
+  font-size: 10px;
+
+}
+
+.payment-total{
+  margin-top: 0.5rem;
+}
+.payment-total span {
+  font-size: 20px;
+  color: #000;
+}
+
+.mark-as-paid {
+  background: #6a1b9a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.mark-as-paid:hover {
+  background: #4a148c;
+}

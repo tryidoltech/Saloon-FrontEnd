@@ -1,0 +1,93 @@
+.pending-appointments-container {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 950px;
+  /* margin-top: 2rem; */
+  margin: 1rem 1rem;
+}
+
+.pending-appointments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pending-appointments-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.pending-add-appointment-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pending-add-appointment-btn:hover {
+  background-color: #0056b3;
+}
+
+.pending-appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pending-appointments-table thead {
+  background-color: #f8f9fa;
+}
+
+.pending-appointments-table th, .pending-appointments-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.pending-appointments-table th {
+  font-weight: bold;
+}
+
+.pending-appt-assign-select, .pending-appt-cancel-btn {
+  background-color: #FCBE2D;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pending-appt-service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.pending-appt-service-item {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.pending-appt-assign-btn:hover {
+  background-color: #e0a800;
+}
+
+.pending-appt-cancel-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.pending-appt-cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.pending-appt-assign-btn .IoIosArrowDown {
+  margin-left: 5px;
+}

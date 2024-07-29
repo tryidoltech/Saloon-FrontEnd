@@ -1,0 +1,74 @@
+.checkin-appointments-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .checkin-appointments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkin-appointments-header h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .checkin-appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .checkin-appointments-table thead {
+    background-color: #f8f9fa;
+  }
+  
+  .checkin-appointments-table th, .checkin-appointments-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .checkin-appointments-table th {
+    font-weight: bold;
+  }
+  
+  .checkin-appt-service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .checkin-appt-service-item {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .checkin-appt-checkin-btn, .checkin-appt-payment-btn {
+    background-color: #3F3677;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .checkin-appt-checkin-btn:hover, .checkin-appt-payment-btn:hover {
+    background-color: #352980;
+  }
+  
+  .checkin-appt-payment-btn {
+    background-color: #C1B589;
+  }
+  
+  .checkin-appt-payment-btn:hover {
+    background-color: #9d7e60;
+  }
+  

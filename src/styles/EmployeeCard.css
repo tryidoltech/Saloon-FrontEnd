@@ -1,0 +1,67 @@
+/* .worker-card {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.worker-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+} */
+
+.employee-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .employee-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  /* .employee-card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+   */
+  .employee-card p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+  }
+  .employee-card span {
+    color: #000;
+    font-weight: 600;
+  }
+  
+  .employee-actions {
+    width: 250px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left: 0.7rem;
+  }
+  
+  .button {
+    cursor: pointer;
+  }

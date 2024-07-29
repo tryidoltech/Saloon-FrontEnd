@@ -1,0 +1,108 @@
+/* General styles for the navbar */
+.navbar-container {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* Styles for search container */
+.navbar-search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  background-color: #F5F6FA;
+  border-radius: 20px;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+.navbar-search-container input {
+  border: none;
+  outline: none;
+  background-color: #F5F6FA;
+  flex: 1;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 20px;
+}
+
+.navbar-search-container .search-icon {
+  color: #888;
+}
+
+/* Styles for notification section */
+.navbar-notification {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-notification .bell-icon {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Styles for profile section */
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.navbar-admin-credentials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.navbar-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.navbar-profile .name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.navbar-profile .role {
+  color: #888;
+  font-size: 14px;
+}
+
+
+
+/* Styles for small screens */
+@media (max-width: 768px) {
+  .navbar-search-container,
+  .navbar-notification {
+      display: none;
+  }
+
+  .navbar-profile {
+      flex: 1;
+      justify-content: flex-end;
+  }
+
+}
+
+/* Styles for large screens */
+@media (min-width: 769px) {
+  .navbar-search-container,
+  .navbar-notification {
+      display: flex;
+  }
+
+
+}

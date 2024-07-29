@@ -1,0 +1,123 @@
+.sign-in {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #0089ED;
+}
+
+.sign-in-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sign-in-headings {
+    padding: -2rem 2rem;
+    color: #fff;
+    margin-left: -1.5rem;
+}
+
+.sign-in-headings-sub-heading1 {
+    font-size: 34px;
+    font-weight: 500;
+}
+
+.sign-in-headings-sub-heading2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.sign-in-headings-sub-heading3 {
+    font-size: 13px;
+    margin-top: 1.5rem;
+    font-weight: 300;
+}
+
+.sign-in-form {
+    width: 400px;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10rem;
+}
+
+.sign-in-form_heading {
+    text-align: left;
+    /* margin-bottom: 2rem; */
+}
+
+.sign-in-form_heading p:first-child {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sign-in-form_heading p:first-child span {
+    font-weight: 600;
+    color: #0089ED;
+}
+
+.sign-in-form_heading p:last-child {
+    font-size: 35px;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.sign-in__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in__form label {
+    margin-top: 1rem;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+}
+
+.sign-in__form input {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sign-in__form__forgot-password {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.sign-in__form__forgot-password a {
+    color: #0089ED;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.sign-in__form button {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0089ED;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-in__form button:hover {
+    background-color: #007acc;
+}
+
+.sign-in-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-img img {
+    width: 300px;
+    height: auto;
+}

@@ -1,0 +1,88 @@
+.admin-settings-container {
+  width: 60%;
+  margin: 0 auto;
+  /* background-color: #fff; */
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  margin-top: 3rem;
+}
+
+.admin-settings-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-settings-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form-group {
+  margin-bottom: 15px;
+}
+
+.admin-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.admin-form-group input[type="text"],
+.admin-form-group input[type="email"],
+.admin-form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-file-upload {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admin-file-upload img.admin-shop-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.admin-file-upload input[type="file"] {
+  display: none;
+}
+
+.admin-file-upload span {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.admin-file-upload small {
+  color: #888;
+}
+
+.admin-form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-cancel-button,
+.admin-confirm-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-cancel-button {
+  background-color: #ccc;
+}
+
+.admin-confirm-button {
+  background-color: #007bff;
+  color: #fff;
+}

@@ -1,0 +1,67 @@
+.paid-appointments-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.paid-appointments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.paid-appointments-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.paid-appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.paid-appointments-table thead {
+  background-color: #f8f9fa;
+}
+
+.paid-appointments-table th,
+.paid-appointments-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.paid-appointments-table th {
+  font-weight: bold;
+}
+
+.paid-appt-service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.paid-appt-service-item {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.paid-appt-payment-btn {
+  background-color: #0096FF;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.paid-appt-payment-btn:hover {
+  background-color: #268dd6;
+}

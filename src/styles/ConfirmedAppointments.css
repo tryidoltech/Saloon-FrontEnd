@@ -1,0 +1,154 @@
+.confirm-appointments-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .confirm-appointments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .confirm-appointments-header h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .confirm-appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .confirm-appointments-table thead {
+    background-color: #f8f9fa;
+  }
+  
+  .confirm-appointments-table th, .confirm-appointments-table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .confirm-appointments-table th {
+    font-weight: bold;
+  }
+  
+  .confirm-appt-service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .confirm-appt-service-item {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .confirm-appt-checkin-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+  }
+  
+  .confirm-appt-checkin-btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* Modal styling */
+.confirm-appointments-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px); 
+  z-index: 1000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-appointments-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  width: 400px;
+  text-align: left;
+}
+
+.confirm-appointments-heading{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.confirm-appointments-close-button {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.confirm-appointments-confirm-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.confirm-appointments-confirm-button:hover {
+  background-color: #1f70c7;
+}
+
+.confirm-appointments-cancel-button {
+  background-color: #ccc;
+  color: black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.confirm-appointments-cancel-button:hover {
+  background-color: #bbb;
+}
+  

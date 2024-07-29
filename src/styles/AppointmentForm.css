@@ -1,0 +1,101 @@
+.appt-form-container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.appt-form-heading{
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.appt-form-form_container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.appt-form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.appt-form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.appt-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.appt-input-container {
+  position: relative;
+}
+
+.appt-input-container .appt-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: black;
+}
+
+.appt-input-container input,
+.appt-input-container select {
+  width: 300px;
+  padding: 10px 10px 10px 30px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f5f6fa;
+}
+
+/* Additional styles for multiple selection */
+#services[multiple] {
+  height: auto;
+}
+
+/* Optional: Add a border or box-shadow when focused */
+#services:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.appt-input-container input:focus,
+.appt-input-container select:focus {
+  outline: none;
+  border-color: #4880ff;
+}
+
+.appt-submit-button {
+  width: 50%;
+  padding: 10px;
+  background-color: #4880ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: .8rem;
+}
+
+.appt-submit-button:hover {
+  background-color: #2a67f4;
+}
+
+.multiselect{
+  margin: 0 auto;
+}
+
+
+@media screen and (max-width:900px){
+  .appt-form-form_container {
+    flex-direction: column;
+  }
+}
