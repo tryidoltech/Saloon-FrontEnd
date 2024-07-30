@@ -123,25 +123,18 @@ const SaloonCalender = () => {
 
       Object.entries(appointments).forEach(([timeSlot, employeeData]) => {
         const appointment = employeeData[employee.id];
-        console.log("appointment " , appointment);
         if (appointment) {
-          const startTime = new Date(`1970-01-01T${appointment.time}:00Z`);
-          console.log("startTime " , startTime);
+          const [hours, minutes] = appointment.time.split(":");
+          const startTime = new Date(currentDate);
+          startTime.setHours(hours, minutes, 0, 0);
           const durationMinutes = appointment.duration;
-          console.log("durationMinutes " , durationMinutes);
-          const endTime = new Date(
-            startTime.getTime() + durationMinutes * 60000
-          );
-
-          console.log("endTime " , endTime);
+          const endTime = new Date(startTime.getTime() + durationMinutes * 60000);
 
           if (!lastEnd || startTime > lastEnd) {
             // Add new appointment block
             merged[employee.id].push({
               start: appointment.time,
-              end: `${endTime.getUTCHours()}:${String(
-                endTime.getUTCMinutes()
-              ).padStart(2, "0")}`,
+              end: `${endTime.getHours()}:${String(endTime.getMinutes()).padStart(2, "0")}`,
               details: appointment,
             });
             lastEnd = endTime;
@@ -221,7 +214,7 @@ const SaloonCalender = () => {
                       <br />
                       <span>{block.details.services.join(", ")}</span>
                       <br />
-                      <span>Employee: {employee.name}</span>
+                      <span>{employee.name}</span>
                     </div>
                   </div>
                 );
