@@ -151,6 +151,10 @@
   margin-top: 10px;
 }
 
+.admin-employee-delete-modal{
+  width: 400px;
+  height: auto;
+}
 .admin-employee-heading-delete-popup {
   margin-bottom: 20px;
   text-align: center;
@@ -186,7 +190,7 @@
 }
 
 .admin-employee-form-buttons-delete-popup button:last-of-type {
-  background-color: #d9534f;
+  background-color: red;
   color: #fff;
 }
 

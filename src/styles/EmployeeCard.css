@@ -51,15 +51,10 @@
   }
   
   .employee-actions {
-    width: 250px;
-    height: 30px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 8px;
-    margin-left: 0.7rem;
+    margin-top: 1rem;
   }
   
   .button {

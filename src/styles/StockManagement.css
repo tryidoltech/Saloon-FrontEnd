@@ -165,6 +165,7 @@
 .stock-modal-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 1.5rem;
 }
 
 .stock-modal-buttons button {
@@ -190,4 +191,8 @@
 
 .stock-modal-buttons button:last-of-type:hover {
   background-color: #0056b3;
+}
+
+.edit-modal-product-name{
+  cursor: not-allowed;
 }

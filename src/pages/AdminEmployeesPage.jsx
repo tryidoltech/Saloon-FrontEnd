@@ -8,12 +8,14 @@ import img from "../assets/add_product.png";
 import uploadIcon from "../assets/Avatar.png";
 import Modal from "react-modal";
 
+// API URLs
 const employee_url = import.meta.env.VITE_API_PENDING_APPOINTMENTS_EMPLOYEES;
 const add_employee_url = import.meta.env.VITE_API_ADD_EMPLOYEE;
 const edit_employee_url = import.meta.env.VITE_API_EDIT_EMPLOYEE;
 const delete_employee_url = import.meta.env.VITE_API_DELETE_EMPLOYEE;
 
 const AdminEmployeesPage = () => {
+  // State variables
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -206,8 +208,14 @@ const AdminEmployeesPage = () => {
           .filter((employee) => employee.id !== "success")
           .map((employee) => (
             <div key={employee.id} className="employee-card-container">
-              <EmployeeCard employee={employee} onSelect={handleSelect} />
-              <div className="employee-actions">
+              <EmployeeCard
+                employee={employee}
+                onSelect={handleSelect}
+                showActions={true} // Pass the prop to indicate action buttons should be shown
+                onEdit={() => openEditModal(employee)} // Pass function to open edit modal
+                onDelete={() => openDeleteModal(employee)} // Pass function to open delete modal
+              />
+              {/* <div className="employee-actions">
                 <FaEdit
                   className="button"
                   style={{ color: "blue" }}
@@ -218,7 +226,7 @@ const AdminEmployeesPage = () => {
                   style={{ color: "red" }}
                   onClick={() => openDeleteModal(employee)}
                 />
-              </div>
+              </div> */}
             </div>
           ))}
       </div>
@@ -389,7 +397,7 @@ const AdminEmployeesPage = () => {
         isOpen={deleteModalIsOpen}
         onRequestClose={closeDeleteModal}
         contentLabel="Delete Worker"
-        className="admin-employee-Modal"
+        className="admin-employee-Modal admin-employee-delete-modal"
         overlayClassName="admin-employee-Overlay"
       >
         <div className="admin-employee-heading-delete-popup">

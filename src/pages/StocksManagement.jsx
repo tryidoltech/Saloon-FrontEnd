@@ -81,7 +81,7 @@ const StocksManagement = () => {
           <div className="stock-action-icons">
             <FaEdit
               className="stock-edit-icon"
-              onClick={() => handleEdit(row.index)}
+              onClick={() => openModal(true, row.index)}
             />
             <FaTrash className="stock-delete-icon" onClick={() => openDeleteModal(row.index)} />
           </div>
@@ -191,6 +191,7 @@ const StocksManagement = () => {
 
   const handleEditSubmit = async () => {
     try {
+      alert("handle edit ke andar");
       const formData = new FormData();
       formData.append("name", newProduct.productName);
       formData.append("quantity", newProduct.piece);
@@ -200,11 +201,14 @@ const StocksManagement = () => {
         formData.append("img", newProduct.image);
       }
 
+      console.log("formdata ke baad");
       const response = await axios.post(edit_stocks_url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+
+      console.log("response done");
 
       const updatedProductWithImageUrl = {
         ...newProduct,
@@ -295,7 +299,7 @@ const StocksManagement = () => {
                   <div className="stock-image-upload" onClick={handleClick}>
                     <input
                       type="file"
-                      id="fileInput"
+                      // id="fileInput"
                       name="image"
                       onChange={handleImageChange}
                       style={{ display: "none" }}
@@ -326,6 +330,8 @@ const StocksManagement = () => {
                   onChange={handleInputChange}
                   placeholder="example"
                   maxLength="15"
+                  disabled={isEditMode}
+                  className="edit-modal-product-name"
                 />
                 {newProduct.productName.length > 15 && (
                   <div className="error-message">Name must be 15 characters or less</div>
@@ -364,7 +370,6 @@ const StocksManagement = () => {
         <div className="stock-modal-overlay">
           <div className="stock-modal-content">
             <div className="stock-header-content">
-              <img src={add_product} alt="" className="stock-header-img" />
               <h3 className="stock-modal-title">Delete Product</h3>
             </div>
             <p>Are you sure you want to delete this product?</p>
