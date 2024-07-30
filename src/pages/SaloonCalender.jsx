@@ -112,10 +112,47 @@ const SaloonCalender = () => {
     const minuteInt = parseInt(minute, 10);
     const ampm = hourInt >= 12 ? "PM" : "AM";
     const adjustedHour = hourInt % 12 || 12;
-    return `${adjustedHour}:${
-      minuteInt < 10 ? `0${minuteInt}` : minuteInt
-    } ${ampm}`;
+    return `${adjustedHour}:${minuteInt < 10 ? `0${minuteInt}` : minuteInt} ${ampm}`;
   };
+
+  const getMergedAppointments = () => {
+    const merged = {};
+    employees.forEach((employee) => {
+      merged[employee.id] = [];
+      let lastEnd = null;
+
+      Object.entries(appointments).forEach(([timeSlot, employeeData]) => {
+        const appointment = employeeData[employee.id];
+        console.log("appointment " , appointment);
+        if (appointment) {
+          const startTime = new Date(`1970-01-01T${appointment.time}:00Z`);
+          console.log("startTime " , startTime);
+          const durationMinutes = appointment.duration;
+          console.log("durationMinutes " , durationMinutes);
+          const endTime = new Date(
+            startTime.getTime() + durationMinutes * 60000
+          );
+
+          console.log("endTime " , endTime);
+
+          if (!lastEnd || startTime > lastEnd) {
+            // Add new appointment block
+            merged[employee.id].push({
+              start: appointment.time,
+              end: `${endTime.getUTCHours()}:${String(
+                endTime.getUTCMinutes()
+              ).padStart(2, "0")}`,
+              details: appointment,
+            });
+            lastEnd = endTime;
+          }
+        }
+      });
+    });
+    return merged;
+  };
+
+  const mergedAppointments = getMergedAppointments();
 
   return (
     <div className="employee-calendar">
@@ -161,28 +198,34 @@ const SaloonCalender = () => {
         <div className="employee-columns">
           {employees.map((employee) => (
             <div key={employee.id} className="employee-column">
-              {timeSlots.map((slot) => (
-                <div key={slot} className="employee-appointment-slot">
-                  {appointments[slot] && appointments[slot][employee.id] ? (
+              {mergedAppointments[employee.id].map((block, index) => {
+                const startIndex = timeSlots.indexOf(block.start);
+                const duration = Math.ceil(block.details.duration / 30);
+                return (
+                  <div
+                    key={index}
+                    className="employee-appointment-slot"
+                    style={{
+                      gridRowStart: startIndex + 1,
+                      gridRowEnd: `span ${duration}`,
+                    }}
+                  >
                     <div
                       className="employee-appointment"
                       style={{ backgroundColor: getRandomColor() }}
                     >
                       <span>
-                        {convertTo12HourFormat(
-                          appointments[slot][employee.id].time
-                        )}
+                        {convertTo12HourFormat(block.start)} -{" "}
+                        {convertTo12HourFormat(block.end)}
                       </span>
                       <br />
-                      <span>
-                        {appointments[slot][employee.id].services.join(", ")}
-                      </span>
+                      <span>{block.details.services.join(", ")}</span>
                       <br />
                       <span>Employee: {employee.name}</span>
                     </div>
-                  ) : null}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>

@@ -211,9 +211,9 @@ const AdminEmployeesPage = () => {
               <EmployeeCard
                 employee={employee}
                 onSelect={handleSelect}
-                showActions={true} // Pass the prop to indicate action buttons should be shown
-                onEdit={() => openEditModal(employee)} // Pass function to open edit modal
-                onDelete={() => openDeleteModal(employee)} // Pass function to open delete modal
+                showActions={true} 
+                onEdit={() => openEditModal(employee)} 
+                onDelete={() => openDeleteModal(employee)} 
               />
               {/* <div className="employee-actions">
                 <FaEdit

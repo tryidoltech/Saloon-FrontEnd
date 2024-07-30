@@ -87,29 +87,33 @@
   background-color: #f9f9f9;
   font-size: 14px;
 }
-
-.employee-columns {
-  display: flex;
+ .employee-columns {
   flex: 1;
   overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .employee-column {
-  flex: 1;
   border-left: 1px solid #ddd;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
+  border-top: 1px solid #ddd;
+  /* background-color: #fff; */
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .employee-appointment-slot {
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
   border-bottom: 1px solid #ddd;
-}
+  grid-row: auto;
+} 
+
 
 .employee-appointment {
   margin: 10px;
